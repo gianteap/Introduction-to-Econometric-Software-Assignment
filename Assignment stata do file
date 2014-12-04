@@ -1,0 +1,9 @@
+ssc install bcuse
+bcuse card
+reg lwage educ exper expersq black south smsa reg661-reg668 smsa66
+reg educ exper expersq black south smsa reg661-reg668 smsa66 nearc4
+ivreg lwage (educ = nearc4) exper expersq black south smsa reg661-reg668 smsa66
+reg educ exper expersq black south smsa reg661-reg668 smsa66 nearc4 nearc2
+ivregress 2sls lwage (educ=nearc4 nearc2) exper expersq black south smsa reg661-reg668 smsa66
+reg IQ nearc4
+reg IQ nearc4 smsa66 reg661 reg662 reg669
