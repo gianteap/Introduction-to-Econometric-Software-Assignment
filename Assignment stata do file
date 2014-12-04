@@ -1,9 +1,14 @@
-ssc install bcuse
-bcuse card
-reg lwage educ exper expersq black south smsa reg661-reg668 smsa66
+ssc install bcuse  //This is to install bcuse
+bcuse card //Use the dataset CARD.RAW
+reg lwage educ exper expersq black south smsa reg661-reg668 smsa66 
+//Estimate a log(wage) equation by OLS with educ, exper, exper2, black, south, smsa, reg661 through reg668 and smsa66 as explanatory variables.
 reg educ exper expersq black south smsa reg661-reg668 smsa66 nearc4
+//Estimate a reduced form equation for educ containing all explanatory variables from part a and the dummy variable near4c.
 ivreg lwage (educ = nearc4) exper expersq black south smsa reg661-reg668 smsa66
+//Estimate the log(wage) equation by IV, using near4 as an instrument for educ.
 reg educ exper expersq black south smsa reg661-reg668 smsa66 nearc4 nearc2
+//estimate the reduced form for educ
 ivregress 2sls lwage (educ=nearc4 nearc2) exper expersq black south smsa reg661-reg668 smsa66
-reg IQ nearc4
-reg IQ nearc4 smsa66 reg661 reg662 reg669
+//Now use nearc2 along with nearc4 as instruments for educ.
+reg IQ nearc4 //Regress iq on nearc4.
+reg IQ nearc4 smsa66 reg661 reg662 reg669 //regress iq on nearc4 along with smsa66, reg661, reg662 and reg669.
